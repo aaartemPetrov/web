@@ -28,15 +28,15 @@ public class CartService {
     public class Validator {
 
         public void cartPageIsOpened() {
-            Assert.assertTrue(cartPage.isOpened(), "Products grid page isn't opened");
+            Assert.assertTrue(cartPage.isOpened(), "Cart page isn't opened");
         }
 
         public void isHeaderCartItemsAmountEquals(int amount) {
-            Assert.assertEquals(cartPage.getHeaderCartItemsAmount(), amount, "Wrong header cart icon amount.");
+            Assert.assertEquals(cartPage.getHeader().getHeaderCartItemsAmount(), amount, "Wrong header cart icon amount.");
         }
 
         public void isHeaderCartItemsAmountBadgeNotPresent() {
-            Assert.assertFalse(cartPage.isHeaderCartItemsAmountPresent(), "Header cart items amount badge present for 0 items in the cart.");
+            Assert.assertFalse(cartPage.getHeader().isHeaderCartItemsAmountPresent(), "Header cart items amount badge present for 0 items in the cart.");
         }
 
         public void isProductNamePresent(Products product) {

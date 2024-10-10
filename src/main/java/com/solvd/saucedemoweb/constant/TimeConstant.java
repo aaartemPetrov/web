@@ -1,9 +1,11 @@
 package com.solvd.saucedemoweb.constant;
 
-public class TimeConstant {
+public interface TimeConstant {
 
-    public static final long ELEMENT_PRESENT_TIMEOUT = 10;
+    long PAGE_OPENING_TIMEOUT = 20;
 
-    public static final long SHORT_TIMEOUT = 3;
+    long ELEMENT_PRESENT_TIMEOUT = 10;
+
+    long SHORT_TIMEOUT = 3;
 
 }

@@ -3,19 +3,18 @@ package com.solvd.saucedemoweb;
 import org.testng.annotations.Test;
 
 import com.solvd.saucedemoweb.constant.Products;
+import com.solvd.saucedemoweb.constant.Users;
 import com.zebrunner.agent.core.annotation.TestCaseKey;
 
 public class CartTest extends BaseTest {
 
-    private static final String STANDARD_USER = "standard_user";
 
-    private static final String PASSWORD = "{crypt:WwobgI5k40XywUBHYUIF5g==}";
 
     @Test
     @TestCaseKey({"ANDK-337", "ANDK-338"})
     public void addAndRemoveProductsToCart() {
         homeLoginService.openLoginPage();
-        homeLoginService.login(STANDARD_USER, PASSWORD);
+        homeLoginService.login(Users.STANDARD_USER, Users.PASSWORD);
 
         productsGridService.validateThat().productsGridPageIsOpened();
         productsGridService.validateThat().isAddToCartButtonPresent(Products.SAUCE_LABS_BACKPACK);

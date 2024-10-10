@@ -29,7 +29,7 @@ public class ProductsGridService {
     }
 
     public void clickHeaderCartIcon() {
-        this.productsGridPage.clickHeaderCartIcon();
+        this.productsGridPage.getHeader().clickHeaderCartIcon();
     }
 
     public class Validator {
@@ -59,7 +59,7 @@ public class ProductsGridService {
         }
 
         public void isHeaderCartItemsAmountEquals(int amount) {
-            Assert.assertEquals(productsGridPage.getHeaderCartItemsAmount(), amount, "Wrong header cart icon amount.");
+            Assert.assertEquals(productsGridPage.getHeader().getHeaderCartItemsAmount(), amount, "Wrong header cart icon amount.");
         }
 
     }

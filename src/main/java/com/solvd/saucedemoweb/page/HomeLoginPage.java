@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import com.solvd.saucedemoweb.constant.TimeConstant;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
 public class HomeLoginPage extends AbstractPage {
@@ -26,7 +27,6 @@ public class HomeLoginPage extends AbstractPage {
 
     public HomeLoginPage(WebDriver driver) {
         super(driver);
-        setPageAbsoluteURL(R.CONFIG.get("url"));
     }
 
     public boolean isUserNameInputPresent() {

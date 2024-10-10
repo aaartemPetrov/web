@@ -7,8 +7,10 @@ import org.openqa.selenium.support.FindBy;
 
 import com.solvd.saucedemoweb.constant.Products;
 import com.solvd.saucedemoweb.constant.TimeConstant;
+import com.solvd.saucedemoweb.page.components.HeaderComponent;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 
 public class ProductsGridPage extends AbstractPage {
@@ -19,19 +21,21 @@ public class ProductsGridPage extends AbstractPage {
     @FindBy(xpath = "//*[@class = 'inventory_item']//*[contains(@class, 'inventory_item_name') and  contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('%s','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'))]//..//..//..//button[contains(@id, 'remove')]")
     private ExtendedWebElement removeButton;
 
-    @FindBy(xpath = "//*[@id='shopping_cart_container']")
-    private ExtendedWebElement headerCartIcon;
-
-    @FindBy(xpath = "//*[@class='shopping_cart_badge']")
-    private ExtendedWebElement headerCartItemsAmount;
+    @FindBy(xpath = "//*[@id='header_container']")
+    private HeaderComponent header;
 
     public ProductsGridPage(WebDriver driver) {
         super(driver);
-        setPageAbsoluteURL(R.CONFIG.get("products_url"));
+        setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
+        setPageURL("inventory.html");
+    }
+
+    public HeaderComponent getHeader() {
+        return this.header;
     }
 
     public boolean isOpened() {
-        return getCurrentUrl().equals(R.CONFIG.get("products_url"));
+        return isPageOpened(TimeConstant.PAGE_OPENING_TIMEOUT);
     }
 
     public void clickAddToCartButton(Products product) {
@@ -40,18 +44,6 @@ public class ProductsGridPage extends AbstractPage {
 
     public void clickRemoveButton(Products product) {
         this.removeButton.format(product.getProductTitle()).click();
-    }
-
-    public void clickHeaderCartIcon() {
-        this.headerCartIcon.click();
-    }
-
-    public int getHeaderCartItemsAmount() {
-        return Integer.parseInt(this.headerCartItemsAmount.getText());
-    }
-
-    public  boolean isHeaderCartIconPresent() {
-        return this.headerCartIcon.isPresent(TimeConstant.ELEMENT_PRESENT_TIMEOUT);
     }
 
     public boolean isAddToCartButtonPresent(Products product) {
