@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Saucedemo Web">
+
+    <test name="Saucedemo Web">
+        <classes>
+            <class name="com.solvd.saucedemoweb.CartTest">
+                <methods>
+                    <include name="addAndRemoveProductsToCart"/>
+                </methods>
+            </class>
+
+            <class name="com.solvd.saucedemoweb.LoginTest">
+                <methods>
+                    <include name="verifyLoginPageIsValidTest"/>
+                    <include name="verifyLoginForExistingUserTest"/>
+                    <include name="verifyLoginForLockedUserTest"/>
+                    <include name="verifyRandomCredentialsLoginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
